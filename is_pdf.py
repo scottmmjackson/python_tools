@@ -8,7 +8,7 @@ try:
 except ImportError:
    sys.exit("pyPdf is required. If you don't have pyPdf, try 'pip install pyPdf'. If you don't have pip, go here: https://pypi.python.org/pypi/pip")
 if sys.version_info[0] != 2 or sys.version_info[1] < 7:
-   sys.exit("Python 2.7+ required. Got Python"+".".join(sys.version_info))
+   sys.exit("Python 2.7+ required. Got Python "+".".join(sys.version_info))
 
 p = argparse.ArgumentParser()
 p.add_argument("testFile",metavar="FILE",type=file,help="file to test for pdf or not")
