@@ -9,6 +9,17 @@ except ImportError:
 if sys.version_info[0] != 2 or sys.version_info[1] < 7:
    sys.exit("Python 2.7+ required. Got Python "+".".join(sys.version_info))
 
+def isPdf(filehandle):
+	try:
+	   d = pyPdf.PdfFileReader(filehandle)
+	   assert d.getNumPages() > 0
+	   return True
+	except:
+	   return False
+
+def isPdfOpen(filename):
+	return isPdf(file(filename))
+
 if __name__ == '__main__':
 	import argparse
 	p = argparse.ArgumentParser()
@@ -25,14 +36,3 @@ if __name__ == '__main__':
 			sys.exit(os.EX_NOTFOUND)
 		else:
 			print args.testFile.name+": not a PDF"
-
-def isPdfOpen(filename):
-	return isPdf(file(filename))
-
-def isPdf(filehandle):
-	try:
-	   d = pyPdf.PdfFileReader(filehandle)
-	   assert d.getNumPages() > 0
-	   return True
-	except:
-	   return False
